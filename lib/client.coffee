@@ -20,10 +20,13 @@ init = ->
         return
 
 
- createTracker = ->
+createTracker = ->
     ga 'create', 'UA-42587559-2', 'auto'
     ga 'set', 'anonymizeIp', true
 
+traceButtonClick = (element, eventLabel, eventValue) ->
+    element.addEventListener 'click', ->
+        ga 'event', 'button', 'click', eventLabel, eventValue
 
 send = (opt_fieldObject) ->
     ga 'send', opt_fieldObject
