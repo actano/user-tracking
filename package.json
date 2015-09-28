@@ -1,0 +1,10 @@
+{
+  "name": "user-tracking",
+  "main": "out/client.js",
+  "version": "0.0.1",
+  "devDependencies": {
+    "coffee-script": "^1.9.3",
+    "component": "^1.1.0"
+  },
+  "dependencies": { }
+}

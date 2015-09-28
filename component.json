@@ -1,0 +1,11 @@
+{
+  "name": "user-tracking",
+  "version": "0.0.1",
+  "repository": "actano/user-tracking",
+  "dependencies": {
+  },
+  "scripts": [
+    "out/client.js"
+  ],
+  "main": "out/client.js"
+}
