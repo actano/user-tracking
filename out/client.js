@@ -31,7 +31,7 @@
 
   traceButtonClick = function(element, eventLabel, eventValue) {
     return element.addEventListener('click', function() {
-      return ga('event', 'button', 'click', eventLabel, eventValue);
+      return ga('send', 'event', 'button', 'click', eventLabel, eventValue);
     });
   };
 

@@ -26,7 +26,7 @@ createTracker = ->
 
 traceButtonClick = (element, eventLabel, eventValue) ->
     element.addEventListener 'click', ->
-        ga 'event', 'button', 'click', eventLabel, eventValue
+        ga 'send', 'event', 'button', 'click', eventLabel, eventValue
 
 send = (opt_fieldObject) ->
     ga 'send', opt_fieldObject
