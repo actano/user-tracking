@@ -27,7 +27,6 @@ UserTracking = ->
         return this
 
     traceButtonClick = (element, eventLabel, eventValue) ->
-        createTracker()
         element.addEventListener 'click', ->
             ga 'send', 'event', 'button', 'click', eventLabel, eventValue
 
