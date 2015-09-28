@@ -42,6 +42,7 @@
   module.exports = {
     init: init,
     createTracker: createTracker,
+    traceButtonClick: traceButtonClick,
     send: send
   };
 

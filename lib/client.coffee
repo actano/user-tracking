@@ -34,5 +34,6 @@ send = (opt_fieldObject) ->
 module.exports = {
     init
     createTracker
+    traceButtonClick
     send
 }
