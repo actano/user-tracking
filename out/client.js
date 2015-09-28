@@ -34,7 +34,9 @@
   };
 
   module.exports = {
-    init: init
+    init: init,
+    createTracker: createTracker,
+    send: send
   };
 
 }).call(this);

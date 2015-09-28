@@ -19,7 +19,8 @@ init = ->
         m.parentNode.insertBefore a, m
         return
 
-createTracker = ->
+
+ createTracker = ->
     ga 'create', 'UA-42587559-2', 'auto'
     ga 'set', 'anonymizeIp', true
 
@@ -29,4 +30,6 @@ send = (opt_fieldObject) ->
 
 module.exports = {
     init
+    createTracker
+    send
 }
