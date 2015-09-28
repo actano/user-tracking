@@ -25,6 +25,9 @@
   };
 
   createTracker = function() {
+    if (typeof ga === "undefined" || ga === null) {
+      init();
+    }
     ga('create', 'UA-42587559-2', 'auto');
     return ga('set', 'anonymizeIp', true);
   };

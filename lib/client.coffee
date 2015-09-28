@@ -21,6 +21,8 @@ init = ->
 
 
 createTracker = ->
+    init() unless ga?
+
     ga 'create', 'UA-42587559-2', 'auto'
     ga 'set', 'anonymizeIp', true
 
