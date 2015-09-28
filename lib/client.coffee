@@ -12,18 +12,17 @@ UserTracking = ->
                 (i[r].q = i[r].q or []).push arguments
                 return
 
-          i[r].l = 1 * new Date
-          a = s.createElement(o)
-          m = s.getElementsByTagName(o)[0]
-          a.async = 1
-          a.src = g
-          m.parentNode.insertBefore a, m
-          return
+            i[r].l = 1 * new Date
+            a = s.createElement(o)
+            m = s.getElementsByTagName(o)[0]
+            a.async = 1
+            a.src = g
+            m.parentNode.insertBefore a, m
+            return
 
     return {
         init
     }
-
 
 module.exports =
     UserTracking
