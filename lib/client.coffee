@@ -35,11 +35,11 @@ UserTracking = ->
         ga 'send', opt_fieldObject
 
     init()
-    createTracker()
+    create()
 
     return {
         init
-        createTracker
+        create
         traceButtonClick
         send
     }

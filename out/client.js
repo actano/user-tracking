@@ -40,10 +40,10 @@
       return ga('send', opt_fieldObject);
     };
     init();
-    createTracker();
+    create();
     return {
       init: init,
-      createTracker: createTracker,
+      create: create,
       traceButtonClick: traceButtonClick,
       send: send
     };
