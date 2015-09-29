@@ -37,9 +37,6 @@
       return this;
     };
     isValidDomain = function() {
-      if (!isValidDomain()) {
-        return;
-      }
       return window.location.hostname === 'localhost';
     };
     traceButtonClick = function(element, eventLabel, eventValue) {
@@ -56,6 +53,9 @@
      * https://developers.google.com/analytics/devguides/collection/analyticsjs/events
      */
     sendEvent = function(category, action, label, value) {
+      if (!isValidDomain()) {
+        return;
+      }
       return ga('send', 'event', category, action, label, value);
     };
     send = function(opt_fieldObject) {

@@ -29,7 +29,6 @@ UserTracking = ->
         return this
 
     isValidDomain = ->
-        return unless isValidDomain()
         window.location.hostname is 'localhost'
 
     traceButtonClick = (element, eventLabel, eventValue) ->
@@ -42,6 +41,7 @@ UserTracking = ->
     # https://developers.google.com/analytics/devguides/collection/analyticsjs/events
     ###
     sendEvent = (category, action, label, value) ->
+        return unless isValidDomain()
         ga 'send', 'event', category, action, label, value
 
 
