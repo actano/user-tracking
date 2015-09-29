@@ -58,6 +58,7 @@ UserTracking = ->
         create
         traceButtonClick
         send
+        sendEvent
     }
 
 module.exports = {

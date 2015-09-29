@@ -71,7 +71,8 @@
       isValidDomain: isValidDomain,
       create: create,
       traceButtonClick: traceButtonClick,
-      send: send
+      send: send,
+      sendEvent: sendEvent
     };
   };
 
