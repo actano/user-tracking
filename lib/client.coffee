@@ -1,6 +1,7 @@
 UserTracking = ->
 
     init = ->
+        return unless isValidDomain()
         i = window
         s = document
         o = 'script'
@@ -22,15 +23,30 @@ UserTracking = ->
 
 
     create = ->
+        return unless isValidDomain()
         ga 'create', 'UA-42587559-2', 'auto'
         ga 'set', 'anonymizeIp', true
         return this
 
+    isValidDomain = ->
+        return unless isValidDomain()
+        window.location.hostname is 'localhost'
+
     traceButtonClick = (element, eventLabel, eventValue) ->
+        return unless isValidDomain()
         element.addEventListener 'click', ->
             ga 'send', 'event', 'button', 'click', eventLabel, eventValue
 
+    ###
+    # For detail on the parameters see
+    # https://developers.google.com/analytics/devguides/collection/analyticsjs/events
+    ###
+    sendEvent = (category, action, label, value) ->
+        ga 'send', 'event', category, action, label, value
+
+
     send = (opt_fieldObject) ->
+        return unless isValidDomain()
         ga 'send', opt_fieldObject
 
     init()
@@ -38,6 +54,7 @@ UserTracking = ->
 
     return {
         init
+        isValidDomain
         create
         traceButtonClick
         send

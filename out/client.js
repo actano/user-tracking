@@ -3,9 +3,12 @@
   var UserTracking;
 
   UserTracking = function() {
-    var create, init, send, traceButtonClick;
+    var create, init, isValidDomain, send, sendEvent, traceButtonClick;
     init = function() {
       var g, i, o, r, s;
+      if (!isValidDomain()) {
+        return;
+      }
       i = window;
       s = document;
       o = 'script';
@@ -26,22 +29,46 @@
       })(i, s, o, g, r);
     };
     create = function() {
+      if (!isValidDomain()) {
+        return;
+      }
       ga('create', 'UA-42587559-2', 'auto');
       ga('set', 'anonymizeIp', true);
       return this;
     };
+    isValidDomain = function() {
+      if (!isValidDomain()) {
+        return;
+      }
+      return window.location.hostname === 'localhost';
+    };
     traceButtonClick = function(element, eventLabel, eventValue) {
+      if (!isValidDomain()) {
+        return;
+      }
       return element.addEventListener('click', function() {
         return ga('send', 'event', 'button', 'click', eventLabel, eventValue);
       });
     };
+
+    /*
+     * For detail on the parameters see
+     * https://developers.google.com/analytics/devguides/collection/analyticsjs/events
+     */
+    sendEvent = function(category, action, label, value) {
+      return ga('send', 'event', category, action, label, value);
+    };
     send = function(opt_fieldObject) {
+      if (!isValidDomain()) {
+        return;
+      }
       return ga('send', opt_fieldObject);
     };
     init();
     create();
     return {
       init: init,
+      isValidDomain: isValidDomain,
       create: create,
       traceButtonClick: traceButtonClick,
       send: send
