@@ -33,8 +33,8 @@ UserTracking = ->
 
     traceButtonClick = (element, eventLabel, eventValue) ->
         return unless isValidDomain()
-        element.addEventListener 'click', ->
-            ga 'send', 'event', 'button', 'click', eventLabel, eventValue
+        element?.addEventListener 'click', ->
+            sendEvent 'button', 'click', eventLabel, eventValue
 
     ###
     # For detail on the parameters see
@@ -43,7 +43,6 @@ UserTracking = ->
     sendEvent = (category, action, label, value) ->
         return unless isValidDomain()
         ga 'send', 'event', category, action, label, value
-
 
     send = (opt_fieldObject) ->
         return unless isValidDomain()
@@ -61,6 +60,39 @@ UserTracking = ->
         sendEvent
     }
 
+
+ConversionTracking = ->
+    init = ->
+        return if window.google_trackConversion?
+
+        scriptNode = document.createElement 'script'
+        scriptNode.type = 'text/javascript'
+        scriptNode.src = '//www.googleadservices.com/pagead/conversion_async.js'
+        document.appendChild scriptNode
+
+
+    track: (cb) ->
+        window.google_conversion_id = 943521439
+        window.google_conversion_language = 'en'
+        window.google_conversion_format = '3'
+        window.google_conversion_color = 'ffffff'
+        window.google_conversion_label = 'GQJPCKT8jl8Qn_3zwQM'
+        window.google_remarketing_only = false
+
+        if window.google_trackConversion?
+            window.google_trackConversion onload_callback: cb
+        else
+            cb()
+
+    init()
+
+    return {
+        init
+        track
+    }
+
+
 module.exports = {
     userTrackingSingleton: UserTracking()
+    conversionTrackingSingleton: ConversionTracking()
 }
