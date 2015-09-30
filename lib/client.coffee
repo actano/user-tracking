@@ -24,7 +24,7 @@ UserTracking = ->
 
     create = ->
         return unless isValidDomain()
-        ga 'create', 'UA-42587559-2', 'auto'
+        ga 'create', 'UA-67546699-1', 'auto'
         ga 'set', 'anonymizeIp', true
         return this
 
