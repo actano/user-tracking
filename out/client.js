@@ -32,7 +32,7 @@
       if (!isValidDomain()) {
         return;
       }
-      ga('create', 'UA-42587559-2', 'auto');
+      ga('create', 'UA-67546699-1', 'auto');
       ga('set', 'anonymizeIp', true);
       return this;
     };
@@ -86,7 +86,7 @@
       scriptNode = document.createElement('script');
       scriptNode.type = 'text/javascript';
       scriptNode.src = '//www.googleadservices.com/pagead/conversion_async.js';
-      return document.appendChild(scriptNode);
+      return document.querySelector('head').appendChild(scriptNode);
     };
     ({
       track: function(cb) {
