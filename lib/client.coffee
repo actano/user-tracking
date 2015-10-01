@@ -68,8 +68,7 @@ ConversionTracking = ->
         scriptNode = document.createElement 'script'
         scriptNode.type = 'text/javascript'
         scriptNode.src = '//www.googleadservices.com/pagead/conversion_async.js'
-        document.appendChild scriptNode
-
+        document.querySelector('head').appendChild scriptNode
 
     track: (cb) ->
         window.google_conversion_id = 943521439
