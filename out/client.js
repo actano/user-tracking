@@ -37,7 +37,7 @@
       return this;
     };
     isValidDomain = function() {
-      return window.location.hostname === 'localhost';
+      return window.location.hostname === 'rplan.com';
     };
     traceButtonClick = function(element, eventLabel, eventValue) {
       if (!isValidDomain()) {

@@ -29,7 +29,7 @@ UserTracking = ->
         return this
 
     isValidDomain = ->
-        window.location.hostname is 'localhost'
+        window.location.hostname is 'rplan.com'
 
     traceButtonClick = (element, eventLabel, eventValue) ->
         return unless isValidDomain()
