@@ -77,7 +77,7 @@
   };
 
   ConversionTracking = function() {
-    var init;
+    var init, track;
     init = function() {
       var scriptNode;
       if (window.google_trackConversion != null) {
@@ -88,23 +88,21 @@
       scriptNode.src = '//www.googleadservices.com/pagead/conversion_async.js';
       return document.querySelector('head').appendChild(scriptNode);
     };
-    ({
-      track: function(cb) {
-        window.google_conversion_id = 943521439;
-        window.google_conversion_language = 'en';
-        window.google_conversion_format = '3';
-        window.google_conversion_color = 'ffffff';
-        window.google_conversion_label = 'GQJPCKT8jl8Qn_3zwQM';
-        window.google_remarketing_only = false;
-        if (window.google_trackConversion != null) {
-          return window.google_trackConversion({
-            onload_callback: cb
-          });
-        } else {
-          return cb();
-        }
+    track = function(cb) {
+      window.google_conversion_id = 943521439;
+      window.google_conversion_language = 'en';
+      window.google_conversion_format = '3';
+      window.google_conversion_color = 'ffffff';
+      window.google_conversion_label = 'GQJPCKT8jl8Qn_3zwQM';
+      window.google_remarketing_only = false;
+      if (window.google_trackConversion != null) {
+        return window.google_trackConversion({
+          onload_callback: cb
+        });
+      } else {
+        return cb();
       }
-    });
+    };
     init();
     return {
       init: init,

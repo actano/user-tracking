@@ -70,7 +70,7 @@ ConversionTracking = ->
         scriptNode.src = '//www.googleadservices.com/pagead/conversion_async.js'
         document.querySelector('head').appendChild scriptNode
 
-    track: (cb) ->
+    track = (cb) ->
         window.google_conversion_id = 943521439
         window.google_conversion_language = 'en'
         window.google_conversion_format = '3'
