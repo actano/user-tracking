@@ -61,14 +61,23 @@ UserTracking = ->
     }
 
 
-ConversionTracking = ->
+###
+# @param customElement: use customElement in rplan features. E.g. a subdom or
+# maincontent element of the feature where it's referenced.
+# Appending the google conversion script to the end of header script breaks the
+# karma testrunner.
+###
+ConversionTracking = (customElement) ->
     init = ->
         return if window.google_trackConversion?
 
         scriptNode = document.createElement 'script'
         scriptNode.type = 'text/javascript'
         scriptNode.src = '//www.googleadservices.com/pagead/conversion_async.js'
-        document.querySelector('head').appendChild scriptNode
+        unless customElement?
+            document.querySelector('head').appendChild scriptNode
+        else
+            customElement.appendChild scriptNode
 
     track = (cb) ->
         window.google_conversion_id = 943521439
@@ -93,5 +102,5 @@ ConversionTracking = ->
 
 module.exports = {
     userTrackingSingleton: UserTracking()
-    conversionTrackingSingleton: ConversionTracking()
+    conversionTrackingSingleton: (customElement) -> ConversionTracking customElement
 }

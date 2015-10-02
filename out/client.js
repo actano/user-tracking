@@ -76,7 +76,7 @@
     };
   };
 
-  ConversionTracking = function() {
+  ConversionTracking = function(customElement) {
     var init, track;
     init = function() {
       var scriptNode;
@@ -86,7 +86,11 @@
       scriptNode = document.createElement('script');
       scriptNode.type = 'text/javascript';
       scriptNode.src = '//www.googleadservices.com/pagead/conversion_async.js';
-      return document.querySelector('head').appendChild(scriptNode);
+      if (customElement == null) {
+        return document.querySelector('head').appendChild(scriptNode);
+      } else {
+        return customElement.appendChild(scriptNode);
+      }
     };
     track = function(cb) {
       window.google_conversion_id = 943521439;
@@ -112,7 +116,9 @@
 
   module.exports = {
     userTrackingSingleton: UserTracking(),
-    conversionTrackingSingleton: ConversionTracking()
+    conversionTrackingSingleton: function(customElement) {
+      return ConversionTracking(customElement);
+    }
   };
 
 }).call(this);
