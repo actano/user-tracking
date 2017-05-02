@@ -3,16 +3,22 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-const UserTracking = () => {
-  const isValidDomain = () => window.location.hostname === 'rplan.com';
+var UserTracking = function UserTracking() {
+  var isValidDomain = function isValidDomain() {
+    return window.location.hostname === 'rplan.com';
+  };
 
-  const init = () => {
+  var init = function init() {
     if (isValidDomain()) {
       /* for the init function copied from google analytics */
       /* eslint-disable no-param-reassign */
-      ((i, s, o, g, r, a, m) => {
+      (function (i, s, o, g, r, a, m) {
         i.GoogleAnalyticsObject = r;
-        i[r] = i[r] || function push(...args) {
+        i[r] = i[r] || function push() {
+          for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
           (i[r].q = i[r].q || []).push(args);
         };
         i[r].l = 1 * new Date();
@@ -25,7 +31,7 @@ const UserTracking = () => {
     }
   };
 
-  const create = () => {
+  var create = function create() {
     if (isValidDomain()) {
       window.ga('create', 'UA-67546699-1', 'auto');
       window.ga('set', 'anonymizeIp', true);
@@ -36,19 +42,21 @@ const UserTracking = () => {
    * For detail on the parameters see
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/events
    */
-  const sendEvent = (category, action, label, value) => {
+  var sendEvent = function sendEvent(category, action, label, value) {
     if (isValidDomain()) {
       window.ga('send', 'event', category, action, label, value);
     }
   };
 
-  const traceButtonClick = (element, eventLabel, eventValue) => {
+  var traceButtonClick = function traceButtonClick(element, eventLabel, eventValue) {
     if (element && isValidDomain()) {
-      element.addEventListener('click', () => sendEvent('button', 'click', eventLabel, eventValue));
+      element.addEventListener('click', function () {
+        return sendEvent('button', 'click', eventLabel, eventValue);
+      });
     }
   };
 
-  const send = optFieldObject => {
+  var send = function send(optFieldObject) {
     if (isValidDomain()) {
       window.ga('send', optFieldObject);
     }
@@ -58,12 +66,12 @@ const UserTracking = () => {
   create();
 
   return {
-    init,
-    isValidDomain,
-    create,
-    traceButtonClick,
-    send,
-    sendEvent
+    init: init,
+    isValidDomain: isValidDomain,
+    create: create,
+    traceButtonClick: traceButtonClick,
+    send: send,
+    sendEvent: sendEvent
   };
 };
 
@@ -73,13 +81,13 @@ const UserTracking = () => {
  * Appending the google conversion script to the end of header script breaks the
  * karma testrunner.
  */
-const ConversionTracking = customElement => {
-  const init = () => {
+var ConversionTracking = function ConversionTracking(customElement) {
+  var init = function init() {
     if (window.google_trackConversion != null) {
       return;
     }
 
-    const scriptNode = document.createElement('script');
+    var scriptNode = document.createElement('script');
     scriptNode.type = 'text/javascript';
     scriptNode.src = '//www.googleadservices.com/pagead/conversion_async.js';
     if (customElement == null) {
@@ -89,7 +97,7 @@ const ConversionTracking = customElement => {
     }
   };
 
-  const track = cb => {
+  var track = function track(cb) {
     window.google_conversion_id = 943521439;
     window.google_conversion_language = 'en';
     window.google_conversion_format = '3';
@@ -107,13 +115,15 @@ const ConversionTracking = customElement => {
   init();
 
   return {
-    init,
-    track
+    init: init,
+    track: track
   };
 };
 
 exports.default = {
   userTrackingSingleton: UserTracking(),
-  conversionTrackingSingleton: customElement => ConversionTracking(customElement)
+  conversionTrackingSingleton: function conversionTrackingSingleton(customElement) {
+    return ConversionTracking(customElement);
+  }
 };
 module.exports = exports['default'];

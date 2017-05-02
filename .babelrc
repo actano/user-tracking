@@ -3,6 +3,14 @@
     "add-module-exports"
   ],
   "presets": [
-    "eslatest-node6"
+    ["env", {
+      "targets": {
+        "browsers": [
+          "chrome >= 53",
+          "firefox >= 42",
+          "ie >= 11",
+        ]
+      }
+    }]
   ]
 }
