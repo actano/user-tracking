@@ -3,9 +3,30 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _get2 = require('lodash/get');
+
+var _get3 = _interopRequireDefault(_get2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// TODO: more or less duplicated from rplan/lib/config-client,
+// extract into a @rplan/config-client module?
+var runtimeConfig = function runtimeConfig() {
+  if (typeof window !== 'undefined' && window.rplanConfig) {
+    return window.rplanConfig;
+  }
+  return {};
+};
+var config = {
+  get: function get(path) {
+    return (0, _get3.default)(runtimeConfig(), path);
+  }
+};
+
 var UserTracking = function UserTracking() {
   var isValidDomain = function isValidDomain() {
-    return window.location.hostname === 'rplan.com';
+    return typeof window !== 'undefined' && window.location.hostname === config.get('domain');
   };
 
   var init = function init() {
@@ -32,8 +53,9 @@ var UserTracking = function UserTracking() {
   };
 
   var create = function create() {
-    if (isValidDomain()) {
-      window.ga('create', 'UA-67546699-1', 'auto');
+    var trackingId = config.get('googleTrackingId');
+    if (isValidDomain() && trackingId) {
+      window.ga('create', trackingId, 'auto');
       window.ga('set', 'anonymizeIp', true);
     }
   };
