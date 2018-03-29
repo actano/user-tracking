@@ -1,7 +1,9 @@
 {
   "name": "user-tracking",
   "main": "out/client.js",
-  "version": "1.2.1",
+  "version": "2.0.0",
+  "license": "UNLICENSED",
+  "private": true,
   "scripts": {
     "build": "babel --out-file out/client.js lib/client.js",
     "lint": "eslint 'lib/*.js'"
