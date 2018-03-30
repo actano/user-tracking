@@ -53,7 +53,7 @@ var UserTracking = function UserTracking() {
   };
 
   var init = function init(_trackingId) {
-    if (_trackingId) {
+    if (_trackingId && !isInitialized()) {
       debug('init with trackingId: ', _trackingId);
       load();
       window.ga('create', _trackingId, 'auto');
