@@ -1,7 +1,7 @@
 {
   "name": "user-tracking",
   "main": "lib/client.js",
-  "version": "2.0.4",
+  "version": "2.0.3",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
