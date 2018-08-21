@@ -40,10 +40,6 @@ const UserTracking = () => {
     }
   }
 
-  const reset = () => {
-    window.ga = undefined
-  }
-
   /*
    * For detail on the parameters see
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/events
